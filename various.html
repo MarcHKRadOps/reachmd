@@ -14,7 +14,7 @@
                     addSize([740, 0], [[970,90],[728,90]]).
                     build();
                 var microPref = 'err';
-                var microSite = window.location.hostname.split(".")[1];   
+                var microSite = window.location.hostname.split(".").reverse()[1];   
                 if(microSite == 'omniaeducation')
                 {microPref = 'omn';}
                 else if(microSite == 'provaeducation')
@@ -27,25 +27,31 @@
                 {microPref = 'gna';}
                 else if(microSite == 'globalwomenshealthacademy')
                 {microPref = 'gwh';}
-                else if(microSite == 'crohnscolitis')
+                else if(microSite == 'crohnscolitisprofessional')
                 {microPref = 'ccp';}
+                else if(microSite == 'rheumatologyacademy')
+                {microPref = 'rha';}
+                else if(microSite == 'globaloncologyacademy')
+                {microPref = 'goa';}
                 else
                 {microPref = 'err';}
-                googletag.defineSlot('/21928603557/' + microPref + '_top', [728,90],'ad-top').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '_body1', [728,90],'ad-body1').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '_body2', [728,90],'ad-body2').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '_body3', [728,90],'ad-body3').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '_module1', [300,250],'ad-module1').defineSizeMapping().addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '_module2', [300,250],'ad-module2').defineSizeMapping().addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '_module3', [300,250],'ad-module3').defineSizeMapping().addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '_module4', [300,250],'ad-module4').defineSizeMapping().addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '_footer', [728,90],'ad-footer').defineSizeMapping(mapSticky).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/top', [728,90],'ad-top').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/body1', [728,90],'ad-body1').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/body2', [728,90],'ad-body2').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/body3', [728,90],'ad-body3').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module1', [300,250],'ad-module1').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module2', [300,250],'ad-module2').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module3', [300,250],'ad-module3').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module4', [300,250],'ad-module4').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/footer', [728,90],'ad-footer').defineSizeMapping(mapSticky).addService(googletag.pubads());
                 googletag.pubads().setTargeting("site", microSite);
                 var pathParts = window.location.pathname.substr(0).split("/");
                 googletag.pubads().setTargeting("agg1", pathParts[1] ? pathParts[1] : "home");
                 googletag.pubads().setTargeting("agg2", pathParts[2] ? pathParts[2] : "none");
                 googletag.pubads().setTargeting("details-program", pathParts[3] ? pathParts[3].slice(0,40) : "none");
                 googletag.pubads().setTargeting("tag", pathParts[4] ? pathParts[4] : "none");
+                googletag.pubads().setTargeting("specialty", "");
+                googletag.pubads().setTargeting("profession", "");
                 //googletag.pubads().enableSingleRequest();
                 //googletag.pubads().collapseEmptyDivs(true);
                 googletag.enableServices();

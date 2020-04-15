@@ -16,22 +16,24 @@
                     addSize([0,0], []).
                     addSize([740,0], [300,250]).
                     build();
-                googletag.defineSlot('/21928603557/RMD_top', [728,90],'ad-top').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/RMD_body1', [728,90],'ad-body1').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/RMD_body2', [728,90],'ad-body2').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/RMD_body3', [728,90],'ad-body3').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/RMD_body4', [728,90],'ad-body4').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/RMD_body5', [728,90],'ad-body5').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/RMD_body6', [728,90],'ad-body6').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/RMD_sidebar', [300,250],'ad-sidebar').defineSizeMapping(mapRect).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/RMD_module', [300,250],'ad-module').defineSizeMapping(mapRect).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/RMD_footer', [728,90],'ad-footer').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/top', [728,90],'ad-top').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/body1', [728,90],'ad-body1').defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/body2', [728,90],'ad-body2').defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/body3', [728,90],'ad-body3').defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/body4', [728,90],'ad-body4').defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/body5', [728,90],'ad-body5').defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/body6', [728,90],'ad-body6').defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/sidebar', [300,250],'ad-sidebar').defineSizeMapping(mapRect).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/module', [300,250],'ad-module').defineSizeMapping(mapRect).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/rmd/footer', [728,90],'ad-footer').defineSizeMapping(mapLeader).addService(googletag.pubads());
                 googletag.pubads().setTargeting("site", "reachmd");
                 var pathParts = window.location.pathname.substr(0).split("/");
                 googletag.pubads().setTargeting("agg1", pathParts[1] ? pathParts[1] : "home");
                 googletag.pubads().setTargeting("agg2", pathParts[2] ? pathParts[2] : "none");
                 googletag.pubads().setTargeting("details-program", pathParts[3] ? pathParts[3].slice(0,39) : "none");
                 googletag.pubads().setTargeting("tag", pathParts[4] ? pathParts[4] : "none");
+                googletag.pubads().setTargeting("specialty", );
+                googletag.pubads().setTargeting("profession", );
                 //googletag.pubads().enableSingleRequest();
                 //googletag.pubads().collapseEmptyDivs(true);
                 googletag.enableServices();
