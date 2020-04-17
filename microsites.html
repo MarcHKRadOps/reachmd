@@ -5,35 +5,53 @@
             window.googletag = window.googletag || {cmd: []};
             googletag.cmd.push(function() {
                 var mapLeader = googletag.sizeMapping().
-                    addSize([0, 0], [[320,50],[320,100],[300,50],[1,1]]).
+                    addSize([0, 0], [[300,250],[320,50],[1,1]]).
                     addSize([740, 0], [[728, 90],[1,1]]).
+                    addSize([1000, 0], [[970, 250],[970,90],[728,90],[1,1]]).
                     build();
-                var mapBody = googletag.sizeMapping().
-                    addSize([0, 0], [[300,250],[320,50],[320,100],[300,50],[1,1]]).
-                    addSize([740, 0], [[728, 90],[1,1]]).
+                var mapSticky = googletag.sizeMapping().
+                    addSize([0, 0], [[320,50],[1,1]]).
+                    addSize([740, 0], [[970,90],[728,90],[1,1]]).
                     build();
-                var mapRect = googletag.sizeMapping().
-                    addSize([0,0], []).
-                    addSize([740,0], [300,250],[1,1]).
-                    build();
-                googletag.defineSlot('/21928603557/rmd/top', [728,90],'ad-top').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/rmd/body1', [728,90],'ad-body1').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/rmd/body2', [728,90],'ad-body2').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/rmd/body3', [728,90],'ad-body3').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/rmd/body4', [728,90],'ad-body4').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/rmd/body5', [728,90],'ad-body5').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/rmd/body6', [728,90],'ad-body6').defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/rmd/sidebar', [300,250],'ad-sidebar').defineSizeMapping(mapRect).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/rmd/module', [300,250],'ad-module').defineSizeMapping(mapRect).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/rmd/footer', [728,90],'ad-footer').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.pubads().setTargeting("site", "reachmd");
+                var microPref = 'err';
+                var microSite = window.location.hostname.split(".").reverse()[1];   
+                if(microSite == 'omniaeducation')
+                {microPref = 'omn';}
+                else if(microSite == 'provaeducation')
+                {microPref = 'prv';}
+                else if(microSite == 'medtelligence')
+                {microPref = 'mtl';}
+                else if(microSite == 'eyehealthacademy')
+                {microPref = 'eha';}
+                else if(microSite == 'globalneurologyacademy')
+                {microPref = 'gna';}
+                else if(microSite == 'globalwomenshealthacademy')
+                {microPref = 'gwh';}
+                else if(microSite == 'crohnscolitisprofessional')
+                {microPref = 'ccp';}
+                else if(microSite == 'rheumatologyacademy')
+                {microPref = 'rha';}
+                else if(microSite == 'globaloncologyacademy')
+                {microPref = 'goa';}
+                else
+                {microPref = 'err';}
+                googletag.defineSlot('/21928603557/' + microPref + '/top', [728,90],'ad-top').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/body1', [728,90],'ad-body1').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/body2', [728,90],'ad-body2').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/body3', [728,90],'ad-body3').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module1', [300,250],'ad-module1').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module2', [300,250],'ad-module2').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module3', [300,250],'ad-module3').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module4', [300,250],'ad-module4').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/footer', [728,90],'ad-footer').defineSizeMapping(mapSticky).addService(googletag.pubads());
+                googletag.pubads().setTargeting("site", microSite);
                 var pathParts = window.location.pathname.substr(0).split("/");
                 googletag.pubads().setTargeting("agg1", pathParts[1] ? pathParts[1] : "home");
                 googletag.pubads().setTargeting("agg2", pathParts[2] ? pathParts[2] : "none");
-                googletag.pubads().setTargeting("details-program", pathParts[3] ? pathParts[3].slice(0,39) : "none");
+                googletag.pubads().setTargeting("details-program", pathParts[3] ? pathParts[3].slice(0,40) : "none");
                 googletag.pubads().setTargeting("tag", pathParts[4] ? pathParts[4] : "none");
-                googletag.pubads().setTargeting("specialty", );
-                googletag.pubads().setTargeting("profession", );
+                googletag.pubads().setTargeting("specialty", "");
+                googletag.pubads().setTargeting("profession", "");
                 //googletag.pubads().enableSingleRequest();
                 //googletag.pubads().collapseEmptyDivs(true);
                 googletag.enableServices();
@@ -45,7 +63,7 @@
     <body>
 
         <h2 style='padding: 20px 0px;'>test</h2>
-        <h5>ad testing for reachmd</h5>
+        <h5>ads</h5>
         <div>
             <span>Advertisement</span>
         </div>
@@ -86,56 +104,48 @@
                 });
             </script>
         </div>
+
         <div>
             <span>Advertisement</span>
         </div>
-        <div id='ad-body4'>
+        <div id='ad-module1'>
             <script type='text/javascript'>
                 googletag.cmd.push(function() {
-                    googletag.display('ad-body4');
+                    googletag.display('ad-module1');
                 });
             </script>
         </div>
         <div>
             <span>Advertisement</span>
         </div>
-        <div id='ad-body5'>
+        <div id='ad-module2'>
             <script type='text/javascript'>
                 googletag.cmd.push(function() {
-                    googletag.display('ad-body5');
+                    googletag.display('ad-module2');
                 });
             </script>
-        </div>
+        </div>        
         <div>
             <span>Advertisement</span>
         </div>
-        <div id='ad-body6'>
+        <div id='ad-module3'>
             <script type='text/javascript'>
                 googletag.cmd.push(function() {
-                    googletag.display('ad-body6');
+                    googletag.display('ad-module3');
                 });
             </script>
-        </div>
+        </div>        
         <div>
             <span>Advertisement</span>
         </div>
-        <div id='ad-sidebar'>
+        <div id='ad-module4'>
             <script type='text/javascript'>
                 googletag.cmd.push(function() {
-                    googletag.display('ad-sidebar');
+                    googletag.display('ad-module4');
                 });
             </script>
         </div>
-        <div>
-            <span>Advertisement</span>
-        </div>
-        <div id='ad-module'>
-            <script type='text/javascript'>
-                googletag.cmd.push(function() {
-                    googletag.display('ad-module');
-                });
-            </script>
-        </div>
+
         <div class="sticky-ad-container" style="position:-webkit-sticky; position:sticky; bottom: 0; background-color: lightblue; margin-top: 20px;z-index:22 !important;">
         <div>
             <span>Advertisement</span>
