@@ -5,16 +5,16 @@
             window.googletag = window.googletag || {cmd: []};
             googletag.cmd.push(function() {
                 var mapLeader = googletag.sizeMapping().
-                    addSize([0, 0], [[320,50],[320,100],[300,50],[1,1]]).
+                    addSize([0, 0], [[320,50],[320,100],[300,50],[1,1],['fluid']]).
                     addSize([740, 0], [[728, 90],[1,1]]).
                     build();
                 var mapBody = googletag.sizeMapping().
-                    addSize([0, 0], [[300,250],[320,50],[320,100],[300,50],[1,1]]).
+                    addSize([0, 0], [[300,250],[320,50],[320,100],[300,50],[1,1],['fluid']]).
                     addSize([740, 0], [[728, 90],[1,1]]).
                     build();
                 var mapRect = googletag.sizeMapping().
                     addSize([0,0], []).
-                    addSize([740,0], [300,250],[1,1]).
+                    addSize([740,0], [[300,250],[1,1],['fluid']]).
                     build();
                 googletag.defineSlot('/21928603557/rmd/top', [728,90],'ad-top').defineSizeMapping(mapLeader).addService(googletag.pubads());
                 googletag.defineSlot('/21928603557/rmd/body1', [728,90],'ad-body1').defineSizeMapping(mapBody).addService(googletag.pubads());
@@ -32,8 +32,9 @@
                 googletag.pubads().setTargeting("agg2", pathParts[2] ? pathParts[2] : "none");
                 googletag.pubads().setTargeting("details-program", pathParts[3] ? pathParts[3].slice(0,39) : "none");
                 googletag.pubads().setTargeting("tag", pathParts[4] ? pathParts[4] : "none");
-                googletag.pubads().setTargeting("specialty", );
-                googletag.pubads().setTargeting("profession", );
+                googletag.pubads().setTargeting("p", );
+                googletag.pubads().setTargeting("s", );
+                googletag.pubads().setTargeting("i", );
                 //googletag.pubads().enableSingleRequest();
                 //googletag.pubads().collapseEmptyDivs(true);
                 googletag.enableServices();

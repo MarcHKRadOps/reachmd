@@ -5,9 +5,9 @@
             window.googletag = window.googletag || {cmd: []};
             googletag.cmd.push(function() {
                 var mapLeader = googletag.sizeMapping().
-                    addSize([0, 0], [[300,250],[320,50],[1,1]]).
+                    addSize([0, 0], [[300,250],[320,50],[1,1],['fluid']]).
                     addSize([740, 0], [[728, 90],[1,1]]).
-                    addSize([1000, 0], [[970, 250],[970,90],[728,90],[1,1]]).
+                    addSize([1000, 0], [[970, 250],[970,90],[728,90],[1,1],['fluid']]).
                     build();
                 var mapSticky = googletag.sizeMapping().
                     addSize([0, 0], [[320,50],[1,1]]).
@@ -39,10 +39,10 @@
                 googletag.defineSlot('/21928603557/' + microPref + '/body1', [728,90],'ad-body1').defineSizeMapping(mapLeader).addService(googletag.pubads());
                 googletag.defineSlot('/21928603557/' + microPref + '/body2', [728,90],'ad-body2').defineSizeMapping(mapLeader).addService(googletag.pubads());
                 googletag.defineSlot('/21928603557/' + microPref + '/body3', [728,90],'ad-body3').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/module1', [300,250],'ad-module1').addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/module2', [300,250],'ad-module2').addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/module3', [300,250],'ad-module3').addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/module4', [300,250],'ad-module4').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module1', [[300,250],[1,1],['fluid']],'ad-module1').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module2', [[300,250],[1,1],['fluid']],'ad-module2').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module3', [[300,250],[1,1],['fluid']],'ad-module3').addService(googletag.pubads());
+                googletag.defineSlot('/21928603557/' + microPref + '/module4', [[300,250],[1,1],['fluid']],'ad-module4').addService(googletag.pubads());
                 googletag.defineSlot('/21928603557/' + microPref + '/footer', [728,90],'ad-footer').defineSizeMapping(mapSticky).addService(googletag.pubads());
                 googletag.pubads().setTargeting("site", microSite);
                 var pathParts = window.location.pathname.substr(0).split("/");
@@ -50,8 +50,9 @@
                 googletag.pubads().setTargeting("agg2", pathParts[2] ? pathParts[2] : "none");
                 googletag.pubads().setTargeting("details-program", pathParts[3] ? pathParts[3].slice(0,40) : "none");
                 googletag.pubads().setTargeting("tag", pathParts[4] ? pathParts[4] : "none");
-                googletag.pubads().setTargeting("specialty", "");
-                googletag.pubads().setTargeting("profession", "");
+                googletag.pubads().setTargeting("p", );
+                googletag.pubads().setTargeting("s", );
+                googletag.pubads().setTargeting("i", );
                 //googletag.pubads().enableSingleRequest();
                 //googletag.pubads().collapseEmptyDivs(true);
                 googletag.enableServices();
