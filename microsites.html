@@ -3,15 +3,16 @@
         <script async src='https://www.googletagservices.com/tag/js/gpt.js'></script>
         <script>
             window.googletag = window.googletag || {cmd: []};
+            var adSlot1, adSlot2, adSlot3, adSlot4, adSlot5, adSlot6, adSlot7, adSlot8, adSlot9;
             googletag.cmd.push(function() {
                 var mapLeader = googletag.sizeMapping().
-                    addSize([0, 0], [[300,250],[320,50],[1,1],['fluid']]).
+                    addSize([0, 0], [[300,250],[320,50],[1,1],'fluid']).
                     addSize([740, 0], [[728, 90],[1,1]]).
-                    addSize([1000, 0], [[970, 250],[970,90],[728,90],[1,1],['fluid']]).
+                    addSize([1025, 0], [[970, 250],[970,90],[728,90],[1,1],'fluid']).
                     build();
                 var mapSticky = googletag.sizeMapping().
                     addSize([0, 0], [[320,50],[1,1]]).
-                    addSize([740, 0], [[970,90],[728,90],[1,1]]).
+                    addSize([1025, 0], [[970,90],[728,90],[1,1]]).
                     build();
                 var microPref = 'err';
                 var microSite = window.location.hostname.split(".").reverse()[1];   
@@ -35,15 +36,15 @@
                 {microPref = 'goa';}
                 else
                 {microPref = 'err';}
-                googletag.defineSlot('/21928603557/' + microPref + '/top', [728,90],'ad-top').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/body1', [728,90],'ad-body1').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/body2', [728,90],'ad-body2').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/body3', [728,90],'ad-body3').defineSizeMapping(mapLeader).addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/module1', [[300,250],[1,1],['fluid']],'ad-module1').addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/module2', [[300,250],[1,1],['fluid']],'ad-module2').addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/module3', [[300,250],[1,1],['fluid']],'ad-module3').addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/module4', [[300,250],[1,1],['fluid']],'ad-module4').addService(googletag.pubads());
-                googletag.defineSlot('/21928603557/' + microPref + '/footer', [728,90],'ad-footer').defineSizeMapping(mapSticky).addService(googletag.pubads());
+                adSlot1 = googletag.defineSlot('/21928603557/' + microPref + '/top', [728,90],'ad-top').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                adSlot2 = googletag.defineSlot('/21928603557/' + microPref + '/body1', [728,90],'ad-body1').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                adSlot3 = googletag.defineSlot('/21928603557/' + microPref + '/body2', [728,90],'ad-body2').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                adSlot4 = googletag.defineSlot('/21928603557/' + microPref + '/body3', [728,90],'ad-body3').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                adSlot5 = googletag.defineSlot('/21928603557/' + microPref + '/module1', [[300,250],[1,1],'fluid'],'ad-module1').addService(googletag.pubads());
+                adSlot6 = googletag.defineSlot('/21928603557/' + microPref + '/module2', [[300,250],[1,1],'fluid'],'ad-module2').addService(googletag.pubads());
+                adSlot7 = googletag.defineSlot('/21928603557/' + microPref + '/module3', [[300,250],[1,1],'fluid'],'ad-module3').addService(googletag.pubads());
+                adSlot8 = googletag.defineSlot('/21928603557/' + microPref + '/module4', [[300,250],[1,1],'fluid'],'ad-module4').addService(googletag.pubads());
+                adSlot9 = googletag.defineSlot('/21928603557/' + microPref + '/footer', [728,90],'ad-footer').defineSizeMapping(mapSticky).addService(googletag.pubads());
                 googletag.pubads().setTargeting("site", microSite);
                 var pathParts = window.location.pathname.substr(0).split("/");
                 googletag.pubads().setTargeting("agg1", pathParts[1] ? pathParts[1] : "home");
@@ -53,11 +54,31 @@
                 googletag.pubads().setTargeting("p", );
                 googletag.pubads().setTargeting("s", );
                 googletag.pubads().setTargeting("i", );
+                googletag.pubads().disableInitialLoad();
                 //googletag.pubads().enableSingleRequest();
                 //googletag.pubads().collapseEmptyDivs(true);
                 googletag.enableServices();
             });
-
+            function afterAdsRenderEnded() {
+                const adBanner = $('.js-ad-banner');
+                const adText = adBanner.parent().find('.ad-text-info');
+                console.log("AICI");
+                console.log(adBanner.height());
+                if (adBanner.height() > 0) {
+                    adText.css('display', 'block');
+                }
+            }
+            var refreshSlots = function() {
+                googletag.cmd.push(function() {
+                    // refresh ads
+                    googletag.pubads().refresh([adSlot1, adSlot2, adSlot3, adSlot4, adSlot5, adSlot6, adSlot7, adSlot8, adSlot9]);
+                    let eventListnerCreated = false;
+                    if (!eventListnerCreated) {
+                        eventListnerCreated = true;
+                        googletag.pubads().addEventListener('slotRenderEnded', afterAdsRenderEnded);
+                    }
+                });
+            };
         </script>
     </head>
 
