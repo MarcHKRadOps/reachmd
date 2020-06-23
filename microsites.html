@@ -6,12 +6,13 @@
             var adSlot1, adSlot2, adSlot3, adSlot4, adSlot5, adSlot6, adSlot7, adSlot8, adSlot9;
             googletag.cmd.push(function() {
                 var mapLeader = googletag.sizeMapping().
-                    addSize([0, 0], [[300,250],[320,50],[1,1],'fluid']).
+                    addSize([0, 0], [[320,100],[320,50],[300,50],[1,1],'fluid']).
                     addSize([740, 0], [[728, 90],[1,1]]).
                     addSize([1025, 0], [[970, 250],[970,90],[728,90],[1,1],'fluid']).
                     build();
                 var mapSticky = googletag.sizeMapping().
-                    addSize([0, 0], [[320,50],[1,1]]).
+                    addSize([0, 0], [[320,50],[300,50],[1,1]]).
+                    addSize([740, 0], [[728, 90],[1,1]]).
                     addSize([1025, 0], [[970,90],[728,90],[1,1]]).
                     build();
                 var microPref = 'err';
@@ -49,8 +50,8 @@
                 var pathParts = window.location.pathname.substr(0).split("/");
                 googletag.pubads().setTargeting("agg1", pathParts[1] ? pathParts[1] : "home");
                 googletag.pubads().setTargeting("agg2", pathParts[2] ? pathParts[2] : "none");
-                googletag.pubads().setTargeting("details-program", pathParts[3] ? pathParts[3].slice(0,40) : "none");
-                googletag.pubads().setTargeting("tag", pathParts[4] ? pathParts[4] : "none");
+                googletag.pubads().setTargeting("details-program", document.querySelector("meta[property='og:title']") ? document.querySelector("meta[property='og:title']").getAttribute("content").slice(0,39) : "none");
+                googletag.pubads().setTargeting("tag", pathParts[3] ? pathParts[pathParts.length - 1] : "none");
                 googletag.pubads().setTargeting("p", );
                 googletag.pubads().setTargeting("s", );
                 googletag.pubads().setTargeting("i", );
@@ -61,11 +62,13 @@
             });
             function afterAdsRenderEnded() {
                 const adBanner = $('.js-ad-banner');
+                const adWithMargins = $('.ad-container-with-margins');
                 const adText = adBanner.parent().find('.ad-text-info');
-                console.log("AICI");
-                console.log(adBanner.height());
                 if (adBanner.height() > 0) {
                     adText.css('display', 'block');
+                    if (adBanner.parent().hasClass('ad-container-with-margins')) {
+                      adWithMargins.css('margin', '20px auto');
+                    }
                 }
             }
             var refreshSlots = function() {
@@ -180,5 +183,6 @@
                 </script>
             </div>
         </div>
+        <script type="text/javascript">window.refreshSlots();</script>
     </body>
 </html>
