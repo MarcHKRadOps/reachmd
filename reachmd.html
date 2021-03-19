@@ -34,7 +34,7 @@
                 googletag.pubads().setTargeting("site", "reachmd");
                 var pathParts = window.location.pathname.substr(0).split("/");
                 googletag.pubads().setTargeting("agg1", pathParts[1] ? pathParts[1] : "home");
-                googletag.pubads().setTargeting("agg2", pathParts[2] ? pathParts[2] : "none");
+                googletag.pubads().setTargeting("agg2", pathParts[2] ? pathParts[2].slice(0,40) : "none");
                 googletag.pubads().setTargeting("details-program", document.querySelector("meta[property='og:title']") ? document.querySelector("meta[property='og:title']").getAttribute("content").slice(0,39) : "none");
                 googletag.pubads().setTargeting("tag", pathParts[3] ? pathParts[pathParts.length - 2] : "none");
                 googletag.pubads().setTargeting("i", window.reachMD.user.rmdvid);
